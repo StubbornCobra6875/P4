@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Johnson's Chrysler Dodge Jeep RAM</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #ff3c3c;
+}
+
+input {
+    padding: 10px;
+    width: 220px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #ff3c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #cc0000;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: #222;
+    padding: 10px;
+    width: 250px;
+    border-radius: 5px;
+}
+
+#message {
+    margin-top: 15px;
+    color: #00ff99;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<h1>Johnson's Chrysler Dodge Jeep RAM</h1>
+<img src="cjdr.png" alt="Johnson's Cars">
+
+<input type="text" id="carInput" placeholder="Enter car name">
+<button id="addCarBtn">Add Car</button>
+
+<h2>Car List</h2>
+<ul id="carList"></ul>
+
+<p id="message"></p>
+
+<!-- ✅ Link to JavaScript -->
+<script>
+    let carInput = document.getElementById("carInput");
+let carList = document.getElementById("carList");
+let message = document.getElementById("message");
+
+let cars = [
+    { name: "2023 Chrysler 300" },
+    { name: "2025 Jeep Grand Cherokee" },
+    { name: "2024 Dodge Charger SRT 392" }
+];
+
+function displayCars() {
+    carList.innerHTML = "";
+
+    cars.forEach(function(car) {
+        let li = document.createElement("li");
+        li.textContent = car.name;
+        carList.appendChild(li);
+    });
+}
+
+function addCar() {
+    let newCar = carInput.value;
+
+    if (newCar === "") {
+        message.textContent = "Please enter a car name!";
+        return;
+    }
+
+    cars.push({ name: newCar });
+    displayCars();
+
+    message.textContent = newCar + " added to catalog!";
+    carInput.value = "";
+}
+
+document.getElementById("addCarBtn").addEventListener("click", addCar);
+
+displayCars();
+</script>
+
+</body>
+</html>
